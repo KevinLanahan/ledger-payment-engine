@@ -16,16 +16,18 @@ class Account(Base):
 
     user_id: Mapped[int] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"),
-        index=True,
         nullable=False,
+        index=True,
     )
 
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     currency: Mapped[str] = mapped_column(String(3), nullable=False, default="USD")
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
-
-    # ⭐ new field
-    account_type: Mapped[str] = mapped_column(String(20), nullable=False, default="user")
+    account_type: Mapped[str] = mapped_column(
+        String(20),
+        nullable=False,
+        default="user",
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),

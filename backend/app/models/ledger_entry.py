@@ -23,7 +23,6 @@ class LedgerEntry(Base):
         nullable=False,
     )
 
-    # signed integer in cents (USD): +1000 = +$10.00, -1000 = -$10.00
     amount_cents: Mapped[int] = mapped_column(Integer, nullable=False)
 
     currency: Mapped[str] = mapped_column(String(3), nullable=False, default="USD")

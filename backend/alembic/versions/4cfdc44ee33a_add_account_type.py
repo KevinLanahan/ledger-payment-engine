@@ -20,7 +20,6 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
 
-    # 1️⃣ Add column with a default so existing rows don't violate NOT NULL
     op.add_column(
         "accounts",
         sa.Column(
@@ -31,7 +30,6 @@ def upgrade() -> None:
         ),
     )
 
-    # 2️⃣ Remove the server default so future inserts rely on the model default
     op.alter_column(
         "accounts",
         "account_type",
